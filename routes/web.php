@@ -20,3 +20,7 @@ Route::resource('funcionario','FuncionarioController');
 Route::resource('projeto','ProjetoController');
 
 Route::resource('departamento','DepartamentoController');
+
+Route::resource('tarefa','TarefaController');
+
+Route::resource('dependente','DependenteController');
