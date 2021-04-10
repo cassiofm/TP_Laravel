@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         DB::table('funcionarios')->insert(['nome'=>'Joao','endereco'=>'rua X','departamento_id'=>1]);
         DB::table('funcionarios')->insert( ['nome'=>'Maria','endereco'=>'rua Y','departamento_id'=>1] );
         
-        DB::table('projetos')->insert(['nome'=>'Projeto1','orcamento'=>10000,'dataInicio'=>'2020-11-19']);
-        DB::table('projetos')->insert(['nome'=>'Projeto2','orcamento'=>20000,'dataInicio'=>'2019-03-02']);
+        DB::table('projetos')->insert(['nome'=>'Projeto1','orcamento'=>10000,'dataInicio'=>'2020-11-19','funcionario_id'=>1]);
+        DB::table('projetos')->insert(['nome'=>'Projeto2','orcamento'=>20000,'dataInicio'=>'2019-03-02','funcionario_id'=>2]);
 
         DB::table('parentescos')->insert(['descricao'=>'Pai']);
         DB::table('parentescos')->insert(['descricao'=>'Mãe']);
