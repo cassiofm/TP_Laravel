@@ -13,22 +13,22 @@ class TarefaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     // Lista funcionários cadastrados
+     // Lista tarefas cadastradas
     public function index()
     {
         // busca duas tarefas por vez no BD
         $tarefas = Tarefa::paginate(2);
-        // Aciona View, passando a ela coleção dos funcionários obtidos no BD   
+        // Aciona View, passando a ela coleção das tarefas obtidas no BD   
         return View('tarefa.index')->with('tarefas',$tarefas); 
     }
 
-     // Aciona a view que envia ao usuário o formulário para cadastro ne novo funcionário
+     // Aciona a view que envia ao usuário o formulário para cadastro de uma nova tarefa
     public function create()
     {
         return View('tarefa.create')->with('cProjetos',Projeto::all());
     }
 
-    // Valida os dados digitados pelo usuário no formulário e, se corretos, cria novo funcionário no BD
+    // Valida os dados digitados pelo usuário no formulário e, se corretos, cria nova tarefa no BD
     // Dados digitados são obtidos no parâmetro objeto $request 
     public function store(Request $request)
     {
@@ -50,25 +50,25 @@ class TarefaController extends Controller
                 'dataTermino.required' => 'Data de termino obrigatoria',
             ]
         );
-        // Cria funcionário no BD
-        Tarefa::create($request->all()); // ['nome'=>'Ana Lucia','endereco'=>'rua K,33', 'departamento_id'=>2]
-        // Redireciona para view que lista os funcionários cadastrados
+        // Cria tarefa no BD
+        Tarefa::create($request->all()); 
+        // Redireciona para view que lista as tarefas cadastradas
         return redirect('/tarefa');
     }
 
-    // Aciona view que apresenta os dados do funcionário conforme $id
+    // Aciona view que apresenta os dados da tarefa conforme $id
     public function show($id)
     {
         return View('tarefa.show')->with('tarefa',Tarefa::find($id));
     }
 
-    // Aciona view que envia ao usuário formulário preenchido com os dados do funcionário conforme $id
+    // Aciona view que envia ao usuário formulário preenchido com os dados da tarefa conforme $id
     public function edit($id)
     {
         return View('tarefa.edit')->with('tarefa',Tarefa::find($id));   
     }
 
-    // Valida os dados alrerados pelo usuário (edição) e, se ok, atualiza funcionário no BD 
+    // Valida os dados alrerados pelo usuário (edição) e, se ok, atualiza tarefa no BD 
     public function update(Request $request, $id)
     {
         $this->validate($request,
@@ -85,12 +85,12 @@ class TarefaController extends Controller
                 'dataTermino.required' => 'Data de termino obrigatoria',
             ]
         );
-        $tarefa = Tarefa::find($id);  // recupera funcionário do BD
-        $tarefa->update($request->all());  // atualiza (grava) novos dados do funcionário
+        $tarefa = Tarefa::find($id);  // recupera tarefa do BD
+        $tarefa->update($request->all());  // atualiza (grava) novos dados da tarefa
         return redirect('/tarefa');
     }
 
-    // Exclui funcionário conforme $id
+    // Exclui tarefa conforme $id
     public function destroy($id)
     {
         Tarefa::destroy($id);

@@ -10,5 +10,11 @@ class Projeto extends Model
 
     public function obterFuncionarios() {
     	return $this->belongsToMany('App\Funcionario')->get();
+
+    }
+
+    public function obterTarefas() {
+    	return $this->belongsToMany('App\Tarefa')->get();
+
     }
 }

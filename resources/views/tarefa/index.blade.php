@@ -9,7 +9,7 @@
 	<th>Data de Inicio</th>
 	<th>Data de Termino</th>
 </tr>
-<!-- Loop pela coleção de funcionários -->
+<!-- Loop pela coleção de tarefas -->
 @foreach($tarefas as $f)
 <tr>
 	<td>{{ $f->belongsTo('App\Projeto','projeto_id','id')->first()->nome }}</td>
