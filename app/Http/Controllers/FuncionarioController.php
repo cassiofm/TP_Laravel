@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Funcionario;  // referencia o model Funcio´nario
 use App\Departamento;
+use App\Parentesco;
+use App\Dependente;
 
 class FuncionarioController extends Controller
 {

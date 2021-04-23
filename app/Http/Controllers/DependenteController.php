@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Dependente;
 use Illuminate\Http\Request;
+use App\Parentesco;
+use App\Funcionario;
 
 class DependenteController extends Controller
 {
@@ -14,7 +16,7 @@ class DependenteController extends Controller
      */
     public function index()
     {
-        //
+        //return View('dependente.show')->with('dependente',$dependentes); 
     }
 
     /**
@@ -44,9 +46,11 @@ class DependenteController extends Controller
      * @param  \App\Dependente  $dependente
      * @return \Illuminate\Http\Response
      */
-    public function show(Dependente $dependente)
+    public function show($funcionario)
     {
-        //
+        //return View('funcionario.show')->with('funcionario',Funcionario::find($id));
+        return View('dependente.show')->with('funcionario',Funcionario::find($funcionario));
+        //->with('dependente',Dependente::find($id));
     }
 
     /**
@@ -67,6 +71,7 @@ class DependenteController extends Controller
      * @param  \App\Dependente  $dependente
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, Dependente $dependente)
     {
         //

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Funcionario extends Model
 {
-    protected $fillable = ['nome','endereco','departamento_id'];
+    protected $fillable = ['nome','endereco','departamento_id','dependente'];
 
     public function obterDepartamento() {
     	return $this->belongsTo('App\Departamento','departamento_id')->first();
@@ -14,6 +14,10 @@ class Funcionario extends Model
 
     public function obterProjetos() {
     	return $this->belongsToMany('App\Projeto')->get();
+    }
+
+    public function obterDependentes() {
+    	return $this->belongsToMany('App\Dependente')->get();
     }
 
 }
